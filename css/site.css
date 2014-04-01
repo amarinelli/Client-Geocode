@@ -1,0 +1,171 @@
+/* IE has layout issues when sorting (see #5413) */
+.group {
+	zoom: 1;
+}
+
+div.ui-datepicker {
+	font-size: 10px;
+}
+html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+#map {
+	padding: 0;
+	border: none;
+	margin: 0px 0px 0px 0px;
+}
+#leftPane {
+	background-color: transparent;
+	width: 1px;
+	height: 1px;
+	border-top: none;
+	border-left: none;
+	border-bottom: none;
+	margin: 0px 0px 0px 0px;
+	color: #343642;
+	font: small Georgia, "Times New Roman", Times, serif;
+	/*letter-spacing: 0.05em;*/
+}
+#HomeButton {
+	position: absolute;
+	top: 67px;
+	right: 138px;
+	z-index: 50;
+}
+#LocateButton {
+	position: absolute;
+	top: 67px;
+	right: 93px;
+	z-index: 50;
+}
+#search {
+	display: block;
+	position: absolute;
+	z-index: 2;
+	top: 20px;
+	right: 95px;
+}
+#ContentPane {
+	position: absolute;
+	top: 115px;
+	left: 20px;
+	z-index: 50;
+	background-color: transparent;
+	/*background-color:rgba(255,250,250,0.55);*/
+}
+#BasemapToggle {
+	position: absolute;
+	top: 20px;
+	right: 15px;
+	z-index: 50;
+}
+#TitleText {
+	position: absolute;
+	top: 22px;
+	left: 75px;
+	z-index: 50;
+	background-color: rgba(250,250,250,0.55);
+	font-size: 17pt;
+	font-weight: bold;
+	font-family: Verdana;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+#SubtitleText {
+	position: absolute;
+	top: 64px;
+	left: 75px;
+	z-index: 50;
+	background-color: rgba(250,250,250,0.55);
+	font-size: 12pt;
+	font-family: Verdana;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 1px;
+}
+#locate {
+	width: 82px;
+	font-family: Verdana;
+	font-size: 12px;
+}
+#clear {
+	width: 82px;
+	font-family: Verdana;
+	font-size: 12px;
+}
+#submit {
+	width: 60px;
+}
+#clearDate {
+	width: 60px;
+}
+#buttons {
+	padding-top: 5px;
+}
+#all {
+	width: 183px;
+	font-family: Verdana;
+	font-size: 12px;
+}
+#numbCasesDIV {
+	left: 100px;
+	padding-left: 5px;
+	font-family: Verdana;
+	font-size: 12px;
+}
+#hugeNumb {
+	right: 20px;
+	font-family: Verdana;
+	font-size: 65pt;
+	position: absolute;
+	z-index: 50;
+	top: 110px;
+}
+#legend {
+	position: relative;
+	font-family: Verdana;
+	font-size: 11px;
+	max-height: 300px;
+	width: auto;
+	overflow-y: auto;
+	overflow-x: auto;
+}
+#Desktop {
+	font-size: 12px;
+	font-family: Verdana;
+}
+#Enterprise {
+	font-size: 12px;
+	font-family: Verdana;
+}
+#Developer {
+	font-size: 12px;
+	font-family: Verdana;
+}
+#Solutions {
+	font-size: 12px;
+	font-family: Verdana;
+}
+#Operations {
+	font-size: 12px;
+	font-family: Verdana;
+}
+#Team {
+	font-size: 12px;
+	font-family: Verdana;
+}
+#Date {
+	font-size: 12px;
+	font-family: Verdana;
+}
+#accordion {
+	overflow-y: auto;
+	overflow-x: auto;
+}
+.open {
+	margin-left: 30px;
+}
+

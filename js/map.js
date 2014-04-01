@@ -57,7 +57,59 @@ $(function() {
 
 var map, locator, geocoder;
 
-require(["esri/map", "esri/config", "esri/dijit/Scalebar", "esri/dijit/HomeButton", "esri/dijit/Geocoder", "esri/dijit/LocateButton", "esri/dijit/BasemapToggle", "esri/tasks/locator", "esri/graphic", "esri/InfoTemplate", "esri/symbols/SimpleMarkerSymbol", "esri/symbols/SimpleLineSymbol", "esri/symbols/Font", "esri/symbols/TextSymbol", "dojo/_base/array", "dojo/_base/Color", "dojo/number", "dojo/parser", "dojo/dom", "dijit/registry", "dijit/form/Button", "dijit/form/Textarea", "dijit/layout/BorderContainer", "dijit/layout/ContentPane", "dijit/layout/AccordionContainer", "dojo/domReady!"], function(Map, esriConfig, Scalebar, HomeButton, Geocoder, LocateButton, BasemapToggle, Locator, Graphic, InfoTemplate, SimpleMarkerSymbol, SimpleLineSymbol, Font, TextSymbol, arrayUtils, Color, number, parser, dom, registry) {
+require(["esri/map",
+	"esri/config",
+	 
+	"esri/dijit/Scalebar", 
+	"esri/dijit/HomeButton", 
+	"esri/dijit/Geocoder", 
+	"esri/dijit/LocateButton", 
+	"esri/dijit/BasemapToggle", 
+	"esri/tasks/locator",
+	 
+	"esri/graphic", 
+	"esri/InfoTemplate", 
+	"esri/symbols/SimpleMarkerSymbol", 
+	"esri/symbols/SimpleLineSymbol", 
+	"esri/symbols/Font", 
+	"esri/symbols/TextSymbol", 
+	"dojo/_base/array", 
+	"dojo/_base/Color", 
+	"dojo/number", 
+	"dojo/parser", 
+	"dojo/dom", 
+	"dijit/registry",
+	 
+	"dijit/form/Button", 
+	"dijit/form/Textarea",
+	 
+	"dijit/layout/BorderContainer", 
+	"dijit/layout/ContentPane", 
+	"dijit/layout/AccordionContainer", 
+	"dojo/domReady!"
+	], function(Map, 
+		esriConfig,
+		 
+		Scalebar, 
+		HomeButton, 
+		Geocoder, 
+		LocateButton, 
+		BasemapToggle, 
+		Locator,
+		 
+		Graphic, 
+		InfoTemplate, 
+		SimpleMarkerSymbol, 
+		SimpleLineSymbol, 
+		Font, 
+		TextSymbol, 
+		arrayUtils, 
+		Color, 
+		number, 
+		parser, 
+		dom, 
+		registry) 
+		{
 	parser.parse();
 
 	//configure map animation to be faster

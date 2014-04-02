@@ -28,7 +28,7 @@ $(function() {
 	$("#from").datepicker({
 		defaultDate : "+1w",
 		showOn : "button",
-		buttonImage : "WebSite\\Images\\iconCalendar.gif",
+		buttonImage : "images\\iconCalendar.gif",
 		buttonImageOnly : true,
 		changeMonth : true,
 		changeYear : true,
@@ -42,7 +42,7 @@ $(function() {
 	$("#to").datepicker({
 		defaultDate : "+1w",
 		showOn : "button",
-		buttonImage : "WebSite\\Images\\iconCalendar.gif",
+		buttonImage : "images\\iconCalendar.gif",
 		buttonImageOnly : true,
 		changeMonth : true,
 		changeYear : true,
@@ -208,18 +208,20 @@ require(["esri/map",
 			if (radiosDate[z].checked) {
 
 				switch (radiosDate[z].value) {
-
 					case "open":
 						var echoElem = "DateO-" + fromDate + "-" + toDate;
-						var labelName = "<b>OPEN</b> " + fromDate.replace(/\//g, "-") + " <b>to</b> " + toDate.replace(/\//g, "-");
+						var labelName = "<b>OPEN</b> " + fromDate.replace(/\//g, "-") + 
+							" <b>to</b> " + toDate.replace(/\//g, "-");
 						break;
 					case "closed":
 						var echoElem = "DateC-" + fromDate + "-" + toDate;
-						var labelName = "<b>CLOSED</b> " + fromDate.replace(/\//g, "-") + " <b>to</b> " + toDate.replace(/\//g, "-");
+						var labelName = "<b>CLOSED</b> " + fromDate.replace(/\//g, "-") + 
+							" <b>to</b> " + toDate.replace(/\//g, "-");
 						break;
 					case "mixed":
 						var echoElem = "DateM-" + fromDate + "-" + toDate;
-						var labelName = "<b>ALL</b> " + fromDate.replace(/\//g, "-") + " <b>to</b> " + toDate.replace(/\//g, "-");
+						var labelName = "<b>ALL</b> " + fromDate.replace(/\//g, "-") + 
+							" <b>to</b> " + toDate.replace(/\//g, "-");
 						break;
 				}
 			}

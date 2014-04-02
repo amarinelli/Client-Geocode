@@ -41,53 +41,58 @@
 
 						<script type="text/javascript">
 							//Call WEB SERVICE TO POPULATE ACTIVE ANALYST MENU
-							$.ajax({
-								type : "POST",
-								contentType : "text/xml; charset=utf-8",
-								url : "http://localhost/WebService/Service1.asmx/GetAnalysts",
-								data : "",
-								crossDomain : true,								
-								success : function(resultAnalysts) {
-
-									var analystString = resultAnalysts.split("-");
-									//console.log(analystString);
-									//console.log(analystString[0]);
-									//console.log(analystString.length);
-
-									for (var list = 0; list < analystString.length - 1; list++) {
-
-										var analyst = analystString[list].split("_");
-										//console.log(analyst);
-
-										//add analyst radio buttons dynamically
-										if (analyst[2] == "Desktop" || analyst[2] == "Enterprise" || analyst[2] == "Developer" || analyst[2] == "Solutions" || analyst[2] == "Operations") {
-											
-											//create radio button and label
-											var choiceSelection = document.createElement('input');
-											var choiceLabel = document.createElement('label');
-
-											//radio button attributes
-											choiceSelection.setAttribute('type', 'radio');
-											choiceSelection.setAttribute('name', "analyst");
-											choiceSelection.setAttribute('id', analyst[1]);
-											choiceSelection.setAttribute('value', analyst[0]);
-
-											//label attributes
-											choiceLabel.innerHTML = analyst[1] + "<br/>";
-											choiceLabel.setAttribute('for', analyst[1]);
-
-											//add elements to appropriate div
-											document.getElementById(analyst[2]).appendChild(choiceSelection);
-											document.getElementById(analyst[2]).appendChild(choiceLabel);
+							$(document).ready(function() {
+								$.ajax({
+									type : "GET",
+									contentType : "application/text; charset=utf-8",
+									url : "http://localhost/WebService/Service1.asmx/GetAnalysts",
+									data : " ",
+									dataType: "text",																	
+									success : function(resultAnalysts) {
+	
+										var analystString = resultAnalysts.split("-");
+										//console.log(analystString);
+										//console.log(analystString[0]);
+										//console.log(analystString.length);
+	
+										for (var list = 0; list < analystString.length - 1; list++) {
+	
+											var analyst = analystString[list].split("_");
+											//console.log(analyst);
+	
+											//add analyst radio buttons dynamically
+											if (analyst[2] == "Desktop" 	|| 
+												analyst[2] == "Enterprise" 	|| 
+												analyst[2] == "Developer" 	|| 
+												analyst[2] == "Solutions" 	|| 
+												analyst[2] == "Operations")	{
+												
+												//create radio button and label
+												var choiceSelection = document.createElement('input');
+												var choiceLabel = document.createElement('label');
+	
+												//radio button attributes
+												choiceSelection.setAttribute('type', 'radio');
+												choiceSelection.setAttribute('name', "analyst");
+												choiceSelection.setAttribute('id', analyst[1]);
+												choiceSelection.setAttribute('value', analyst[0]);
+	
+												//label attributes
+												choiceLabel.innerHTML = analyst[1] + "<br/>";
+												choiceLabel.setAttribute('for', analyst[1]);
+	
+												//add elements to appropriate div
+												document.getElementById(analyst[2]).appendChild(choiceSelection);
+												document.getElementById(analyst[2]).appendChild(choiceLabel);
+											}
 										}
 									}
-								}
+								});
 							});
 							
 						</script>
 
 						<div id="accordion">
-
 							<div class="group">
 								<h3 style="font-size:13px">Desktop</h3>
 								<div id="Desktop"></div>
@@ -148,8 +153,8 @@
 										Clear
 									</button>
 									<br />
-								</div>
-							</div>
+								</div><!--div Date end-->
+							</div><!--div Group end-->
 						</div><!--div accordian end-->
 						<div id="buttons">
 							<button id="locate" data-dojo-type="dijit/form/Button" >
@@ -163,15 +168,12 @@
 								ALL OPEN CASES
 							</button>
 						</div><!--div buttons end-->
-
 						<div id="numbCasesDIV">
 							<br/>
 						</div><!--div numbCasesDIV end-->
-						<!--add background to legend using: style="background-color:rgba(250,250,250,0.55)" in div tag-->
-
 					</form>
 					<div id="legend" style="background-color:rgba(250,250,250,0.7)"></div><!--div legend end-->
-				</div><!--div ContentPane end #50FAFAFA-->
+				</div><!--div ContentPane end-->
 			</div><!--div map end-->
 		</div><!--div mainWindow end-->
 	</body>

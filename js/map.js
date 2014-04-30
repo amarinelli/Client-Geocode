@@ -128,7 +128,7 @@ require(["esri/map",
 
 	if (height != 1024 && width != 1280) {
 		map = new Map("map", {
-			basemap : "streets",
+			basemap : "topo",
 			center : [-97.5, 52.5],
 			//center: [-97.0, 60.0], //load map on the approx. longitudinal and latitudinal centre of Canada
 			zoom : 5,
@@ -137,7 +137,7 @@ require(["esri/map",
 		});
 	} else {
 		map = new Map("map", {
-			basemap : "streets",
+			basemap : "topo",
 			center : [-108.0, 58.0],
 			//center: [-97.0, 60.0], //load map on the approx. longitudinal and latitudinal centre of Canada
 			zoom : 4,

@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--master-->
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
+
+		<title>Geocode Clients | Esri Canada</title>
+
+		<link rel="Shortcut Icon" href=".\images\ESRI_Globe.png">
+		
+		<link rel="stylesheet" href="http://js.arcgis.com/3.8/js/dojo/dijit/themes/tundra/tundra.css">
+		<link rel="stylesheet" type="text/css" href="http://js.arcgis.com/3.8/js/esri/css/esri.css">
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<script src="http://js.arcgis.com/3.8/"></script>
+		
+		<link rel="stylesheet" href="css/site.css"/>
+		<script src="js/map.js"></script>
+	</head>
+
+	<body class="tundra">
+		<div id="mainWindow" data-dojo-type="dijit/layout/BorderContainer"
+		data-dojo-props="design:'sidebar', gutters:false"
+		style="width:100%; height:100%;">
+
+			<div id="map"
+			data-dojo-type="dijit/layout/ContentPane"
+			data-dojo-props="region:'center'"
+			style="overflow:hidden;">
+				<div id="HomeButton"></div>
+				<div id="search"></div>
+				<div id="LocateButton"></div>
+				<div id="BasemapToggle"></div>
+				<div id="TitleText">Geocoding Esri Canada Client Base</div>
+				<div id="SubtitleText">TECHNICAL SUPPORT ANALYST QUERY</div>
+				<div id="hugeNumb"></div>
+				<div id="ContentPane">
+					<form id="Form1">
+
+						<script type="text/javascript">
+							//Call WEB SERVICE TO POPULATE ACTIVE ANALYST MENU
+							$(document).ready(function() {
+								$.ajax({
+									type : "GET",
+									contentType : "application/text; charset=utf-8",
+									url : "http://localhost/WebService_Git/Service1.asmx/GetAnalysts",
+									data : "",
+									dataType: "text",																	
+									success : function(resultAnalysts) {
+	
+										var analystString = resultAnalysts.split("-");
+										//console.log(analystString);
+										//console.log(analystString[0]);
+										//console.log(analystString.length);
+	
+										for (var list = 0; list < analystString.length - 1; list++) {
+	
+											var analyst = analystString[list].split("_");
+											//console.log(analyst);
+	
+											//add analyst radio buttons dynamically
+											if (analyst[2] == "Desktop" 	|| 
+												analyst[2] == "Enterprise" 	|| 
+												analyst[2] == "Developer" 	|| 
+												analyst[2] == "Solutions" 	|| 
+												analyst[2] == "Operations")	{
+												
+												//create radio button and label
+												var choiceSelection = document.createElement('input');
+												var choiceLabel = document.createElement('label');
+	
+												//radio button attributes
+												choiceSelection.setAttribute('type', 'radio');
+												choiceSelection.setAttribute('name', "analyst");
+												choiceSelection.setAttribute('id', analyst[1]);
+												choiceSelection.setAttribute('value', analyst[0]);
+	
+												//label attributes
+												choiceLabel.innerHTML = analyst[1] + "<br/>";
+												choiceLabel.setAttribute('for', analyst[1]);
+	
+												//add elements to appropriate div
+												document.getElementById(analyst[2]).appendChild(choiceSelection);
+												document.getElementById(analyst[2]).appendChild(choiceLabel);
+											}
+										}
+									}
+								});
+							});
+							
+						</script>
+
+						<div id="accordion">
+							<div class="group">
+								<h3 style="font-size:13px">Desktop</h3>
+								<div id="Desktop"></div>
+							</div>
+							<div class="group">
+								<h3 style="font-size:13px">Enterprise</h3>
+								<div id="Enterprise"></div>
+							</div>
+							<div class="group">
+								<h3 style="font-size:13px">Developer</h3>
+								<div id="Developer"></div>
+							</div>
+							<div class="group">
+								<h3 style="font-size:13px">Solutions</h3>
+								<div id="Solutions"></div>
+							</div>
+							<div class="group">
+								<h3 style="font-size:13px">Operations</h3>
+								<div id="Operations"></div>
+							</div>
+							<div class="group">
+								<h3 style="font-size:13px"><em>Team Query</em></h3>
+								<div id="Team">
+									<input type="radio" name="analyst" id="DesktopTeam" value="Desktop"/>
+									<label for="DesktopTeam">Desktop</label>
+									<br/>
+									<input type="radio" name="analyst" id="Server" value="Server"/>
+									<label for="Server">Enterprise</label>
+									<br/>
+									<input type="radio" name="analyst" id="Development" value="Development"/>
+									<label for="Development">Developer</label>
+									<br/>
+									<input type="radio" name="analyst" id="SolutionsTeam" value="Solutions"/>
+									<label for="SolutionsTeam">Solutions</label>
+									<br/>
+								</div>
+							</div>
+							<div class="group">
+								<h3 style="font-size:13px"><em>Date Query</em></h3>
+								<div id="Date">
+									<input type="radio" name="datePick" id="open" value="open" class="open"/>
+									<label for="open">Open</label>
+									<input type="radio" name="datePick" id="closed" value="closed" />
+									<label for="closed">Closed</label>
+									<input type="radio" name="datePick" id="mixed" value="mixed" />
+									<label for="mixed">All</label>
+									<br />
+									<label for="from">From</label>
+									<input type="text" id="from" name="from">
+									<br/>
+									<label for="To" style="padding-left:18px">to</label>
+									<input type="text" id="to" name="to">
+									<br />
+									<button id="submit" data-dojo-type="dijit/form/Button" style="padding-left:35px; font-size:8pt">
+										Submit
+									</button>
+									<button id="clearDate" data-dojo-type="dijit/form/Button" style="font-size:8pt">
+										Clear
+									</button>
+									<br />
+								</div><!--div Date end-->
+							</div><!--div Group end-->
+						</div><!--div accordian end-->
+						<div id="buttons">
+							<button id="locate" data-dojo-type="dijit/form/Button" >
+								Locate
+							</button>
+							<button id="clear" data-dojo-type="dijit/form/Button">
+								Clear Map
+							</button>
+							<br />
+							<button id="all" data-dojo-type="dijit/form/Button">
+								ALL OPEN CASES
+							</button>
+						</div><!--div buttons end-->
+						<div id="numbCasesDIV">
+							<br/>
+						</div><!--div numbCasesDIV end-->
+					</form>
+					<div id="legend" style="background-color:rgba(250,250,250,0.7)"></div><!--div legend end-->
+				</div><!--div ContentPane end-->
+			</div><!--div map end-->
+		</div><!--div mainWindow end-->
+	</body>
+</html>

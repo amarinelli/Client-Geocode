@@ -230,7 +230,21 @@ require(["esri/map",
 		window.labelName = labelName;
 
 		console.log("parameter: " + echoElem);
-		DatabaseWebService.Service1.GetAddress(echoElem, SucceededCallback);
+		
+		//Call WEB SERVICE TO GEOCODE ADDRESSES
+							
+		$.ajax({
+			type : "GET",
+			contentType : "application/text; charset=utf-8",
+			url : "http://localhost/WebService_Git/Service1.asmx/GetAddress",
+			data : "analyst_name=" + echoElem,
+			dataType: "text",																	
+			success : function(resultAddress) {
+				window.result = resultAddress;
+				console.log(resultAddress);
+				preLocate();
+			}
+		});
 
 	}
 
@@ -264,14 +278,31 @@ require(["esri/map",
 				}
 
 				window.labelName = labelName;
-
-				//Call WEB SERVICE
+				
 				var echoElem = radios[i].value;
-				DatabaseWebService.Service1.GetAddress(echoElem, SucceededCallback);
+				
+				WebServiceCall(echoElem);
 
 				break;
 			}
 		}
+	}
+	
+	function WebServiceCall(analystValue){
+		//Call WEB SERVICE TO GEOCODE ADDRESSES
+							
+		$.ajax({
+			type : "GET",
+			contentType : "application/text; charset=utf-8",
+			url : "http://localhost/WebService_Git/Service1.asmx/GetAddress",
+			data : "analyst_name=" + analystValue,
+			dataType: "text",																	
+			success : function(resultAddress) {
+				window.result = resultAddress;
+				console.log(resultAddress);
+				preLocate();
+			}
+		});
 	}
 
 	function EchoUserInput_all() {
@@ -280,10 +311,23 @@ require(["esri/map",
 
 		var labelName = "All Open Cases";
 		window.labelName = labelName;
-
-		//Call WEB SERVICE
+		
 		var echoElem_all = "everything";
-		DatabaseWebService.Service1.GetAddress(echoElem_all, SucceededCallback);
+		
+		//Call WEB SERVICE TO GEOCODE EVERYTHING 
+							
+		$.ajax({
+			type : "GET",
+			contentType : "application/text; charset=utf-8",
+			url : "http://localhost/WebService_Git/Service1.asmx/GetAddress",
+			data : "analyst_name=" + echoElem_all,
+			dataType: "text",																	
+			success : function(resultAddress) {
+				window.result = resultAddress;
+				console.log(resultAddress);
+				preLocate();
+			}
+		});
 	}
 
 	// This is the callback function that processes the Web Service return value

@@ -10,8 +10,26 @@ html, body {
 	height: 100%;
 	width: 100%;
 	margin: 0;
-	padding: 0;
+	padding: 0;	
 }
+/*
+#mainWindow {
+	background-color: grey;
+}
+
+ #maxButton {
+	position: absolute;
+	bottom: 60px;
+	right: 10px;
+	z-index: 50;
+}
+
+#minButton {
+	position: absolute;
+	bottom: 67px;
+	right: 93px;
+	z-index: 50; */
+
 #map {
 	padding: 0;
 	border: none;

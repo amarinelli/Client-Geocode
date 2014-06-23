@@ -189,12 +189,37 @@ require(["esri/map",
 	locator = new Locator("http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer");
 	locator.on("address-to-locations-complete", showResults);
 
+	/*
+	var body = document.getElementsByTagName("body")[0]; 
+	var s = document.createElement("input"); 
+	s.src = "images\\max.png";
+	s.type = "image";
+	s.id = "maxButton";
+	s.addEventListener("click", AnalystInfoUp, false);
+	body.appendChild(s);
+	
+	
+	function AnalystInfoUp(){
+		console.log("click");
+		var mapElem = document.getElementById("map");
+		mapElem.style.marginBottom="500px";
+	}
+	
+	var body = document.getElementsByTagName("body")[0]; 
+	var t = document.createElement("input"); 
+	t.src = "images\\min.png";
+	t.type = "image";
+	t.id = "minButton";
+	body.appendChild(t);
+	*/
+	
+	
 	// listen for button click then geocode
 	registry.byId("locate").on("click", EchoUserInput);
 	registry.byId("clear").on("click", clearMap);
 	registry.byId("all").on("click", EchoUserInput_all);
 	registry.byId("submit").on("click", DatePickQuery);
-	registry.byId("clearDate").on("click", DatePickClear);
+	registry.byId("clearDate").on("click", DatePickClear);	
 
 	function DatePickQuery() {
 

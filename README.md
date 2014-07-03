@@ -1,3 +1,5 @@
+THIS BRANCH IS INTENDED TO REMOVE JQUERY AND REPLACE ITS FUNCTIONALITY WITH DOJO
+
 ##Client-Geocode
 
 Geocoding client locations with analyst queries and activity tracking.<br>
